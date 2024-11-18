@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Models\Pet;
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -50,7 +52,7 @@ class User extends Authenticatable
 
     public function pets() : HasMany
     {
-        return $this->hasMany(SkuSet::class, 'user_id');
+        return $this->hasMany(Pet::class, 'owner_id');
     }
 
 
