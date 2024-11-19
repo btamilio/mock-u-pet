@@ -15,4 +15,3 @@ npm i
 
 
 ./artisan db:seed
-./artisan db:seed BreedSeeder
