@@ -11,44 +11,49 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pets', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
 
-            // could be an enum, but seems overkill for 2 values
-            $table->char('type', 1)->nullable();
+        if (! Schema::hasTable('pet_breeds'))
+            Schema::create('pet_breeds', function (Blueprint $table) {
+                $table->id();
+                $table->string('name')->nullable();
+                $table->char('type', 1)->nullable();
+                $table->boolean("is_dangerous")->nullable()->default(0);
+                $table->timestamps();
 
-            // Laravel has shorthand foreignId methods, but I like to be explicit...
-            $table->foreign('owner_id')->references('id')->on('users')->nullable();
-            $table->foreign('breed_id')->references('id')->on('pet_breeds')->nullable();
+                $table->index('type');
+                $table->unique(['type', 'name']);
+            });
 
-            $table->datestamp('birthday')->nullable();
-            $table->bool("is_birthday_approximate")->nullable();
-            $table->bool("is_birthday_unknown")->nullable();
+        if (! Schema::hasTable('pets'))
+            Schema::create('pets', function (Blueprint $table) {
+                $table->id();
+                $table->string('name')->nullable();
 
-            $table->char('gender', 1)->nullable();
-            $table->boolean('is_neutered')->nullable();
+                // could be an enum, but seems overkill for 2 values
+                $table->char('type', 1)->nullable();
 
-            $table->timestamps();
+                // Laravel has shorthand foreignId methods, but I like to be explicit for readability
+                $table->integer("owner_id")->nullable();
+                $table->foreign('owner_id')->references('id')->on('users')->nullable();
+                $table->integer("breed_id")->nullable();
+                $table->foreign('breed_id')->references('id')->on('pet_breeds')->nullable();
 
-            $table->index('owner_id');
-            $table->index('type');
-            $table->index('breed_id');
+                $table->timestamp('birthday')->nullable();
+                $table->boolean("is_birthday_approximate")->nullable();
+                $table->boolean("is_birthday_unknown")->nullable();
+
+                $table->char('gender', 1)->nullable();
+                $table->boolean('is_neutered')->nullable();
+                $table->boolean('is_indoor')->nullable();
+
+                $table->timestamps();
+
+                $table->index('owner_id');
+                $table->index('type');
+                $table->index('breed_id');
+            });
 
 
-        });
-
-        Schema::create('pet_breeds', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-            $table->char('type', 1)->nullable();
-            $table->bool("is_dangerous")->nullable()->default(0);
-            $table->timestamps();
-
-            $table->index('type');
-            $table->unique(['type', 'name']);
-
-        });
 
  
     }

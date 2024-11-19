@@ -13,6 +13,8 @@ use App\Models\Breed;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
+use Log;
+use Storage;
 
 class BreedSeeder extends Seeder
 {
@@ -24,25 +26,38 @@ class BreedSeeder extends Seeder
         $cache_key = sha1(env("APP_NAME").__METHOD__);
 
         // Check cache... no need to hit the API more than once.
-        Cache::get($cache_key, function() use ($cache_key) {
+        $data = Cache::get($cache_key, function() use ($cache_key) {
   
                 // Let's go ahead and scrape the list of pets directly from the open GraphQL endpoint...
                 $response = Http::retry(3, 3000)
                                     ->post(env("REMOTE_API_URL"), [ "query" => "query { getBreeds { breeds } }"])
                                     ->onError(function() {
-                                            // Simple failure apparent in Artisan CLI
-                                            die("Scrape of pet breed information unsuccessful!");
+                                            Log::error("Scrape of pet breed information unsuccessful. Going to Plan B...");
                                     });
- 
-                $json_data = $response->body();
+
+                // where this is a demo, if the API is not available, we have a snapshot of the JSON locally..
+                $data = ($response->successful())
+                            ? $response->body()
+                            : Storage::get("seeder/get_breeds.json");
+
+                Cache::put($cache_key, $data, now()->addHours(1));
+                return $data;
 
 
-                Cache::put($cache_key, $json_data, now()->addHours(1));
-                return $json_data;
         });
 
 
- 
+        foreach (json_decode($data)->data->getBreeds->breeds ?? [] as $breed ) {
+                list($type, $name) = explode("|", $breed);
+                   Breed::factory()->create([
+                        
+                   ]);
+
+        }
+
+
+        dd($data);
+
 
     }
 }
