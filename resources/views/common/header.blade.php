@@ -44,28 +44,25 @@ rsort($manifest);
     <meta name="apple-mobile-web-app-title" content="Mock--U-Pet" />
     <link rel="manifest" href="/img/favicon/site.webmanifest" />
 
-
+@livewireStyles
 
 </head>
 <body>
-        <div class="container"> 
 
+<!-- outer container -->
+<div class="container"> 
 
 <header>
-
-
-        <div class="position-relative">
-            <div class="position-absolute top-0 start-50 translate-middle">
-                <div class="row">
-                    <div class="col col-md-auto">
-                        <img src="/img/paw.png" width="50" height="50" />
-                    </div>
-                    <div class="col col-md-auto">
-                        <h1>Mock-U-Pet&trade;</h1>
-                    </div>
+    <div class="position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle">
+            <div class="row">
+                <div class="col col-md-auto">
+                    <img src="/img/paw.png" width="50" height="50" />
+                </div>
+                <div class="col col-md-auto text-nowrap">
+                    <h1>Mock-U-Pet&trade;</h1>
                 </div>
             </div>
-   
-    </header>
- 
+        </div>
+</header>
  

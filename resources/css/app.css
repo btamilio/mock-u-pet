@@ -14,13 +14,11 @@ body {
 
 header {
     margin-top: 50px;
-    padding-top: 50px;
-    padding-bottom: 3vh;
+    padding-bottom: 8vh;
 }
 
 main {
-  
-    margin-top: 2vh;
+      min-width: 500px;
        padding-bottom: 1vh;
 }
 
@@ -36,6 +34,6 @@ header h1 {
  
 
 footer {
-      padding-top: 3vh;
+      padding-top: 8vh;
  
 }

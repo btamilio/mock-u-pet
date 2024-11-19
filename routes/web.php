@@ -14,4 +14,7 @@ use App\Http\Controllers\Web\LoginController;
 Route::get('/', HomeController::class)->name('home');
 
 
+Route::get('/account/pets', HomeController::class)->name('web.account.pets');
+
+
 

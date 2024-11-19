@@ -10,7 +10,12 @@ class HomeController extends Controller
 
     public function __invoke(Request $request)
     {
-            return view("home");
+
+        if ($request->user()) {
+            return redirect()->route('web.account.pets', [], 303);
+        }
+
+        return view("home");
     }
 
  
