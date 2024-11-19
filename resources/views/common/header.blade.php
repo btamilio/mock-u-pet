@@ -8,8 +8,8 @@
     <title>{{ $title ?? "Mock-U-Pet" }}</title>
     
     @php
-        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), TRUE) ?? [];
-        rsort($manifest);
+$manifest = json_decode(file_get_contents(public_path('build/manifest.json')), TRUE) ?? [];
+rsort($manifest);
     @endphp
 
     @production
@@ -22,10 +22,10 @@
         @endforeach
     @else
         @vite([
-            'resources/sass/app.scss',
-            'resources/css/app.css',
-            'resources/js/app.js'
-        ])
+        'resources/sass/app.scss',
+        'resources/css/app.css',
+        'resources/js/app.js'
+    ])
     @endproduction
     
 
@@ -41,23 +41,31 @@
     <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="TC" />
+    <meta name="apple-mobile-web-app-title" content="Mock--U-Pet" />
     <link rel="manifest" href="/img/favicon/site.webmanifest" />
 
 
 
-</head>–
+</head>
 <body>
+        <div class="container"> 
 
-        <header>
 
-                    <div class="nav-left">
-                        <img src="/img/paw.png" alt="Mock-U-Pet Logo" width="40" height="40" /></div>
-                         <div class="nav-center">
-                       
-            
+<header>
+
+
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-50 translate-middle">
+                <div class="row">
+                    <div class="col col-md-auto">
+                        <img src="/img/paw.png" width="50" height="50" />
                     </div>
+                    <div class="col col-md-auto">
+                        <h1>Mock-U-Pet&trade;</h1>
+                    </div>
+                </div>
+            </div>
+   
+    </header>
  
- 
-        </header>
  

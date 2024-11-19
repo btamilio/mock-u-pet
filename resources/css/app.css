@@ -1,3 +1,41 @@
+@import "fonts";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+  background-color: #efefef;
+  font-family: 'Lato', sans-serif;
+}
+
+
+
+header {
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 3vh;
+}
+
+main {
+  
+    margin-top: 2vh;
+       padding-bottom: 1vh;
+}
+
+
+
+
+
+header h1 {
+    font-size: 2.5em;
+    vertical-align: center;
+ 
+}
+ 
+
+footer {
+      padding-top: 3vh;
+ 
+}
