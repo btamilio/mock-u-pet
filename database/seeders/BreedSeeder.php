@@ -44,12 +44,12 @@ class BreedSeeder extends Seeder
                 return $data;
         });
 
-        // defaults "Can't find it" seems a bit unnecessary, so will present it this way and make my case,
-        // otherwise will (would) code to spec.
+        // // defaults "Can't find it" seems a bit unnecessary, so will present it this way and make my case,
+        // // otherwise will (would) code to spec.
 
         foreach (["D", "C"] as $type) {
-            Breed::factory()->create(['type' => $type, 'name' => "I don’t know" ]);
-            Breed::factory()->create(['type' => $type, 'name' => "It's a mix" ]);
+            DB::table('pet_breeds')->upsert(['type' => $type, 'name' => "I don’t know" ], ["type", "name"], ['type']);
+            DB::table('pet_breeds')->upsert(['type' => $type, 'name' => "It's a mix" ], ["type", "name"], ['type']);
         }
 
         $breeds = json_decode($data)->data->getBreeds->breeds ?? [];
@@ -57,7 +57,7 @@ class BreedSeeder extends Seeder
 
         foreach ($breeds as $breed ) {
                    list($type, $name) = explode("|", $breed);
-                   Breed::factory()->create([ 'type' => $type, 'name' => $name ]);
+                   DB::table('pet_breeds')->upsert([ 'type' => $type, 'name' => $name ], ["type", "name"], ['name']);
         }
 
         Log::info(__METHOD__ . ": success!");

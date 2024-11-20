@@ -12,21 +12,12 @@ use App\Models\User;
 
 class Pet extends Model
 {
-
-
-
+ 
     public function owner() : HasOne
     {
         return $this->hasOne(User::class, 'id', 'owner_id');
     }
 
-
-    protected function casts() : array
-    {
-        return [
-            'type' => PetType::class,
-        ];
-    }
 
 
 }
