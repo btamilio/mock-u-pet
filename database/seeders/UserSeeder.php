@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
         // create a user
         User::factory()->create([
             'name' => env("USER_SEED_NAME", 'Doug Walker'),
-            'email' => env("USER_SEED_EMAIL", 'doug@example.com'),
-            'password' => Hash::make(env("USER_SEED_PASSWORD", 'bren-rocks-2024!'))
+            'email' => env("USER_SEED_EMAIL", 'doug.walker@example.com'),
+            'password' => Hash::make(env("USER_SEED_PASSWORD", 'hireme123!'))
         ]);
 
 
