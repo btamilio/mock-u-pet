@@ -1,4 +1,4 @@
-<form wire:submit="login">
+<form autocomplete="off" wire:submit="login">
 
 @if ($errors->any())
     <div class="alert alert-danger" role="alert">
