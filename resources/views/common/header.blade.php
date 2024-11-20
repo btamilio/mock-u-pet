@@ -63,6 +63,10 @@ rsort($manifest);
                     <h1>Mock-u-Pet&trade;</h1>
                 </div>
             </div>
+  <!--          <div class="row">
+                    <div class="col col-md-auto">logged in as {{ request()->user()->email }}</div>
+            </div>
+        -->
         </div>
 </header>
  

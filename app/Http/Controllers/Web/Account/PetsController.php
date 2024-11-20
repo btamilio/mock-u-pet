@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Account;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Pet;
 
 class PetsController extends Controller
 {
@@ -12,7 +13,10 @@ class PetsController extends Controller
  
     public function index()
     {
-        return view("account.pets");
+        return view("account.pets", [
+            "pets" => Pet::all() ?? []
+ 
+        ]);
     }
 
  
