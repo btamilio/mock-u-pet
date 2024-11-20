@@ -15,12 +15,7 @@ class Pet extends Model
 {
 
 
-    public function breeds() : HasMany
-    {
-        return (!empty($this->breed_type)) 
-                    ? $this->hasMany(Breed::class, 'type', $this->breed_type)
-                    : $this->hasMany(Breed::class);
-    }
+
 
 
     public function owner() : HasOne
