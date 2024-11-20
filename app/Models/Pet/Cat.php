@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Pet;
 
 
 use App\Models\Pet;
+use App\Models\Breed;
+
 
 class Cat extends Pet
 {
-    protected static $record_type = 'C';
+    protected $breed_type = 'C';
 
-    public function tracking()
-    {
-        return $this->hasMany(Breed::class, 'type', $this->record_type);
-    }
+
+
+ 
+
+ 
 
 }

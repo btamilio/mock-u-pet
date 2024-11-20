@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Pet;
+use App\Models\Breed;
 
-class Dog extends Model
+class Dog extends Pet
 {
-    //
+  protected $breed_type = 'D';
 }
