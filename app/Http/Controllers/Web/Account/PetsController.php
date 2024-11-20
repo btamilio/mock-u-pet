@@ -12,7 +12,7 @@ class PetsController extends Controller
  
     public function index()
     {
-        //
+        return view("account.pets");
     }
 
  

@@ -30,7 +30,7 @@ class LoginForm extends Component
         $validated = $this->validate(['email' => 'bail|required|email', 'password' => 'bail|required|min:8']);
         
         if (Auth::attempt($validated))
-            return redirect()->intended('web.account.pets');
+            return redirect()->route('web.account.pets');
         
         
         $this->addError('creds', 'The provided credentials do not match our records');   
