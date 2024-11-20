@@ -8,33 +8,32 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
+use Livewire\Attributes\Validate;
+use Livewire\Form;
+use Illuminate\Validation\Validator;
+
 
 class LoginForm extends Component
 {
 
 
-    public $email = "";
-    public $password = "";
 
-    protected $rules = [
-        'password' => 'required',
-        'email'    => 'required|email'
-    ];
  
+    public $email = '';
+
+ 
+    public $password = '';
+
 
     public function login()
     {
- 
-        $credentials = $this->validate($this->rules);
+        $validated = $this->validate(['email' => 'bail|required|email', 'password' => 'bail|required|min:8']);
         
-        if (Auth::attempt($credentials)) {
-            request()->session()->regenerate();
+        if (Auth::attempt($validated))
             return redirect()->intended('web.account.pets');
-        }
-
-        return back()->withErrors([
-            'error' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        
+        
+        $this->addError('creds', 'The provided credentials do not match our records');   
 
     }
 

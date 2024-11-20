@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $title ?? "Mock-U-Pet" }}</title>
+    <title>{{ $title ?? "Mock-u-Pet" }}</title>
     
     @php
 $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), TRUE) ?? [];
@@ -30,8 +30,8 @@ rsort($manifest);
     
 
 
-    <meta name="title" content="Mock-U-Pet" />
-    <meta name="description" content="Mock-U-Pet" />
+    <meta name="title" content="Mock-u-Pet" />
+    <meta name="description" content="Mock-u-Pet" />
     <!-- <meta name="twitter:card" content="summary_large_image" />
     <meta name="og:title" content="" />
     <meta name="og:description" content="" />
@@ -60,7 +60,7 @@ rsort($manifest);
                     <img src="/img/paw.png" width="50" height="50" />
                 </div>
                 <div class="col col-md-auto text-nowrap">
-                    <h1>Mock-U-Pet&trade;</h1>
+                    <h1>Mock-u-Pet&trade;</h1>
                 </div>
             </div>
         </div>

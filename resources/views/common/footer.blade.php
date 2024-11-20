@@ -1,16 +1,14 @@
-   
  
-            <div class="row justify-content-md-center">
-        
-                <div class="col-md-auto">
-                    <footer>
-                        Copyright &copy; {{ date("Y") }} | Mock-U-Pet&trade;
+            <div class="row position-absolute bottom-0 start-50 translate-middle-x">
+                <div class="col">
+                    <footer >
+                        Copyright &copy; {{ date("Y") }} | Mock-u-Pet&trade;
                     </footer>
                 </div>
             </div>
-        </div>
+    </div>
 
-        @livewireScripts
+    @livewireScripts
         
 </body>
 </html>
